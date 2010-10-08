@@ -101,26 +101,7 @@ Exhibit.GraphView.prototype._weightFuncs = {
     }
 };
 
-
-Exhibit.GraphView.prototype._reconstruct = function() {
-    var self = this;
-    var collection = this._uiContext.getCollection();
-    var database = this._uiContext.getDatabase();
-    var settings = this._settings;
-    var accessors = this._accessors;
-    var currentSet = collection.getRestrictedItems();
-
-    //var canvas = document.createElement("canvas");
-    //self.appendChild(canvas);
-
-    var vis = new pv.Panel().canvas(self._div);
-    var network = vis.add(pv.Layout.Force)
-    
-    vis      .width(400)
-      .height(400)    .event("mousedown", pv.Behavior.pan())
-    .event("mousewheel", pv.Behavior.zoom());
-
-
+Exhibit.GraphView.prototype._dataForProtovis(currentSet) {
     var nodes = [], nodeNames = {};
     var links = [];
 
@@ -146,42 +127,60 @@ Exhibit.GraphView.prototype._reconstruct = function() {
     	  });
     });
     
-    network.nodes(nodes).links(links);
-    //network.nodes(miserables.nodes).links(miserables.links);
+    return {
+        nodes: nodes,
+        links: links,
+    };
+}
 
-colors = pv.Colors.category19();
+Exhibit.GraphView.prototype._reconstruct = function() {
+    var self = this;
+    var collection = this._uiContext.getCollection();
+    var database = this._uiContext.getDatabase();
+    var settings = this._settings;
+    var accessors = this._accessors;
+    var currentSet = collection.getRestrictedItems();
 
+    var vis = new pv.Panel().canvas(self._div);
+    var network = vis.add(pv.Layout.Force)
     
-network.link.add(pv.Line)
-        .strokeStyle("#999")
-        .lineWidth(2)
-        .add(pv.Dot)
-                .data(function(l) { var size = self._nodeWeightFunc(l.targetNode.weight, this.scale); return [{
-                        x: l.targetNode.x - this.scale * 0.5 * size *
-Math.cos(Math.atan2(l.targetNode.y -
-l.sourceNode.y, l.targetNode.x - l.sourceNode.x)),
-                        y: l.targetNode.y - this.scale * 0.5 * size *
-Math.sin(Math.atan2(l.targetNode.y -
-l.sourceNode.y, l.targetNode.x - l.sourceNode.x))
-                }]})
-                .angle(function (n,l) Math.atan2(l.targetNode.y -
-l.sourceNode.y,
-l.targetNode.x - l.sourceNode.x) - Math.PI/2)
-                .shape("triangle")
+    vis.width(400).height(400)
+       .event("mousedown", pv.Behavior.pan())
+       .event("mousewheel", pv.Behavior.zoom());
+
+    // Load our data
+    protovisData = self.dataForProtovis();
+    network.nodes(protovisData.nodes).links(protovisData.links);
+
+    colors = pv.Colors.category19();
+
+    network.link.add(pv.Line)
+                .strokeStyle("#999")
+                .lineWidth(2)
+                .add(pv.Dot)
+                .data(function(l) {
+                    // Place the arrows in the middle of the arcs
+                    return [{
+                        x: (l.targetNode.x + l.sourceNode.x) / 2,
+                        y: (l.targetNode.y + l.sourceNode.y) / 2,
+                    }]
+                 })
+                .angle(function (n,l) {
+                    return Math.atan2(l.targetNode.y - l.sourceNode.y, l.targetNode.x - l.sourceNode.x) - Math.PI/2
+                })
+                .shape("square")
                 .fillStyle("#999")
                 .size(function(n, l) { return self._nodeWeightFunc(l.targetNode.weight, this.scale); } ); 
                 
-network.node.add(pv.Dot)
-    .size(function(d) self._nodeWeightFunc(d.weight, this.scale))
-    .fillStyle(function(d) d.fix ? "brown" : colors(d.group))
-    .strokeStyle(function() this.fillStyle().darker())
-    .lineWidth(1)
-    .title(function(d) d.nodeName)
-    .event("mousedown", pv.Behavior.drag())
-    .event("drag", network);
-    
-    
+    network.node.add(pv.Dot)
+                .size(function(d) self._nodeWeightFunc(d.weight, this.scale))
+                .fillStyle(function(d) d.fix ? "brown" : colors(d.group))
+                .strokeStyle(function() this.fillStyle().darker())
+                .lineWidth(1)
+                .title(function(d) d.nodeName)
+                .event("mousedown", pv.Behavior.drag())
+                .event("drag", network);
+
     vis.render();
-    
 };
 
