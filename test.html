@@ -1,0 +1,17 @@
+<!DOCTYPE html!>
+<html lang="en" xml:lang="en">
+  <head>
+    <title>GraphView test</title>
+    <link href="data.js" type="application/json" rel="exhibit/data"/>
+    <script type="application/javascript" src="http://localhost:8888/exhibit/api/exhibit-api.js"></script>
+    <!--<script type="application/javascript" src="http://thejit.org/static/v20/Jit/jit.js"></script>-->
+    <script type="application/javascript" src="http://vis.stanford.edu/protovis/protovis-d3.2.js"></script>
+    <script type="application/javascript" src="http://vis.stanford.edu/protovis/ex/miserables.js"></script>
+    <script type="application/javascript" src="graph.js"></script>
+  </head>
+
+  <body>
+    <h1><code>GraphView</code> test</h1>
+    <div ex:role="view" ex:viewClass="Exhibit.GraphView" ex:edges=".cites" ex:nodeWeight=".citationCount" ex:nodeWeightType="log" ex:nodeWeightScale="3"></div>
+  </body>
+</html>
