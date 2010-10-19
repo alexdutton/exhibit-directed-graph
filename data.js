@@ -5,9 +5,11 @@
         }
     },
     properties: {
-        "cites": {
+        "citing": {
             valueType: "item",
-            reverseLabel: "is cited by"
+        },
+        "cited": {
+            valueType: "item",
         },
         "citationCount": {
             valueType: "number"
@@ -21,7 +23,6 @@
             label: "W001",
             title: "Some paper",
             authors: ["A001", "A002"],
-            cites: ["W002"],
             published: "2010-02-01",
             citationCount: 132,
         },
@@ -29,7 +30,6 @@
             label: "W002",
             title: "Some paper",
             authors: ["A001", "A002"],
-            cites: ["W003"],
             published: "2010-02-01",
             citationCount: 132,
         },
@@ -37,10 +37,21 @@
             label: "W003",
             title: "Another paper",
             authors: [],
-            cites: [],
             published: "2009-06-12",
             citationCount: 132,
-        }
+        },
+        {
+            type: "Citation",
+            label: "C001",
+            citing: "W001",
+            cited: "W002",
+        },
+        {
+            type: "Citation",
+            label: "C002",
+            citing: "W002",
+            cited: "W003",
+        },
     ]
 }
   

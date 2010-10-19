@@ -23,7 +23,8 @@ Exhibit.GraphView = function(containerElmt, uiContext, html) {
 Exhibit.GraphView._settingSpecs = {
     "nodeWeightType": {type: "text", defaultValue: "linear", choices: ["linear", "log"]},
     "nodeWeightScale": {type: "float", defaultValue: 1},
-
+    "edges": {type: "text", defaultValue: null},
+    "nodes": {type: "text", defaultValue: null},
 
 
     "plotHeight":   { type: "int",   defaultValue: 400 },
@@ -43,12 +44,34 @@ Exhibit.GraphView._settingSpecs = {
 };
 
 Exhibit.GraphView._accessorSpecs = [
-    {   accessorName: "getEdges",
-        attributeName: "edges"
+    {
+        accessorName: "getEdgeColor",
+        attributeName: "edgeColor",
+        type: "string",
     },
-    {   accessorName: "getNodeWeight",
-        attributeName: "nodeWeight"
+    {
+        accessorName: "getEdgeWeight",
+        attributeName: "edgeWeight",
+        type: "float",
     },
+    {
+        accessorName: "getNodeWeight",
+        attributeName: "nodeWeight",
+        type: "float",
+    },
+    {
+        accessorName: "getSource",
+        attributeName: "source"
+    },
+    {
+        accessorName: "getType",
+        attributeName: "type"
+    },
+    {
+        accessorName: "getTarget",
+        attributeName: "target"
+    },
+
 ];
 
 Exhibit.GraphView.create = function(configElmt, containerElmt, uiContext) {
@@ -58,6 +81,9 @@ Exhibit.GraphView.create = function(configElmt, containerElmt, uiContext) {
     );
     Exhibit.GraphView._configure(view, configuration);
     
+    Exhibit.SettingsUtilities.createAccessorsFromDOM(configElmt, Exhibit.GraphView._accessorSpecs, view._accessors);
+    Exhibit.SettingsUtilities.collectSettingsFromDOM(configElmt, Exhibit.GraphView._settingSpecs, view._settings);
+
     view._configure();
     view._reconstruct();
     return view;
@@ -101,12 +127,28 @@ Exhibit.GraphView.prototype._weightFuncs = {
     }
 };
 
-Exhibit.GraphView.prototype._dataForProtovis(currentSet) {
+Exhibit.GraphView.prototype._getType = function(itemID, database) {
+    var type = null;
+    
+    this._accessors.getType(itemID, database, function(_type) {
+        type = _type;
+    });
+    return type;
+}
+
+Exhibit.GraphView.prototype._dataForProtovis = function() {
+    var currentSet = this._uiContext.getCollection().getRestrictedItems();
+    var accessors = this._accessors;
     var nodes = [], nodeNames = {};
     var links = [];
+    var self = this;
 
     var i = 0;
     currentSet.visit(function(itemID) {
+        alert(i + ' ' + itemID + ' ' + self._getType(itemID, database));
+        if (self._getType(itemID, database) != self._settings.nodes)
+            return;
+
         var weight = 1;
         accessors.getNodeWeight(itemID, database, function(_weight) {
             weight = _weight;
@@ -118,13 +160,21 @@ Exhibit.GraphView.prototype._dataForProtovis(currentSet) {
     	  nodeNames[itemID] = i++;
     });
     currentSet.visit(function(itemID) {
-    	  accessors.getEdges(itemID, database, function(target) {
-    	  	   links.push({
-    	  	       source: nodeNames[itemID],
-    	  	       target: nodeNames[target],
-    	  	       value: 1
-    	  	   });
-    	  });
+        if (self._getType(itemID, database) != self._settings.edges)
+            return;
+
+        var source = null, target = null, color = '#888', weight = null;
+        accessors.getSource(itemID, database, function(x) { source = x; });
+        accessors.getTarget(itemID, database, function(x) { target = x; });
+        accessors.getEdgeColor (itemID, database, function(x) { color  = x; });
+        accessors.getEdgeWeight(itemID, database, function(x) { weight = x; });
+
+        links.push({
+            source: nodeNames[source],
+            target: nodeNames[target],
+            color:  color,
+            value:  weight
+        });
     });
     
     return {
@@ -149,7 +199,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
        .event("mousewheel", pv.Behavior.zoom());
 
     // Load our data
-    protovisData = self.dataForProtovis();
+    protovisData = self._dataForProtovis();
     network.nodes(protovisData.nodes).links(protovisData.links);
 
     colors = pv.Colors.category19();
@@ -168,8 +218,8 @@ Exhibit.GraphView.prototype._reconstruct = function() {
                 .angle(function (n,l) {
                     return Math.atan2(l.targetNode.y - l.sourceNode.y, l.targetNode.x - l.sourceNode.x) - Math.PI/2
                 })
-                .shape("square")
-                .fillStyle("#999")
+                .shape("triangle")
+//                .fillStyle(function(n, l) { return self._edgeColorFunc(); })
                 .size(function(n, l) { return self._nodeWeightFunc(l.targetNode.weight, this.scale); } ); 
                 
     network.node.add(pv.Dot)
