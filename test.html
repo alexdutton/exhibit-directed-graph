@@ -2,7 +2,8 @@
 <html lang="en" xml:lang="en">
   <head>
     <title>GraphView test</title>
-    <link href="data.js" type="application/json" rel="exhibit/data"/>
+    <link href="reis.js" type="application/json" rel="exhibit/data"/>
+    <script type="application/javascript" src="http://localhost:8888/exhibit/ajax/api/simile-ajax-bundle.js"></script>
     <script type="application/javascript" src="http://localhost:8888/exhibit/api/exhibit-api.js"></script>
     <!--<script type="application/javascript" src="http://thejit.org/static/v20/Jit/jit.js"></script>-->
     <script type="application/javascript" src="http://vis.stanford.edu/protovis/protovis-d3.2.js"></script>
@@ -12,6 +13,8 @@
 
   <body>
     <h1><code>GraphView</code> test</h1>
-    <div ex:role="view" ex:viewClass="Exhibit.GraphView" ex:type=".type" ex:nodes="Work" ex:edges="Citation" ex:source=".citing" ex:target=".cited" ex:nodeWeight=".citationCount" ex:edgeWeight="1" ex:nodeWeightType="log" ex:nodeWeightScale="3"></div>
+    <div ex:role="view" ex:viewClass="Exhibit.GraphView" ex:type=".type" ex:nodes="Work" ex:edges="Citation" ex:source=".citing" ex:target=".cited" ex:nodeWeight=".citationCount" ex:edgeWeight="1" ex:nodeWeightType="cuberoot" ex:nodeWeightScale="14" ex:xAxis=".date"  ex:nodeColorGrouper=".rdf_type" style="border:1px solid red;" ex:text=".citation"></div>
+    <div ex:role="facet" ex:expression=".citationCount" ex:facetClass="Slider"/>
+    <div ex:role="view"/>
   </body>
 </html>

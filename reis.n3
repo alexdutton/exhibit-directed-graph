@@ -1,0 +1,1354 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dc:     <http://purl.org/dc/elements/1.1/> .
+@prefix cc:     <http://web.resource.org/cc/>.
+@prefix foaf:   <http://xmlns.com/foaf/0.1/>.   
+@prefix prism:  <http://prismstandard.org/namespaces/basic/2.0>.
+@prefix geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix cito:   <http://purl.org/spar/cito/>.
+@prefix fabio:   <http://purl.org/spar/fabio/>.
+@prefix c4o:   <http://purl.org/spar/c4o/>.
+@prefix pso:   <http://purl.org/spar/pso/>.
+@prefix frbr:   <http://purl.org/vocab/frbr/core#>.
+@prefix xsd:	<http://www.w3.org/2001/XMLSchema#>.
+
+# This file contains metadata descriptions, made using 
+# CiTO, the Citation Typing Ontology, and FaBiO, the FRBR-aligned Bibliographic Ontology, of the references in the article
+# by Reis RB, Ribeiro GS, Felzemburgh RDM, Santana FS, Mohr S, et al. (2008) 
+# Impact of environment and social gradient on Leptospira infection in urban slums. 
+# PLoS Negl Trop Dis 2(4): e228. 
+# The metadata are encoded as RDF using Turtle format.
+
+# This citation information file has been prepared by and is copyright (c) David Shotton, University of Oxford, 27 April 2009.   
+# Minor corrections of CiTO terms made 26 June 2009, and again 16 March 2010 to conform to CiTO version 1.6.
+# Reformatted 09 July 2010 to increase legibility and correct a syntactic error.
+# Revised completely 18 October 2010 to employ CiTO v2.0 and FaBiO v1.0 rather than CiTO v1.6.
+# This document is an open access reference work distributed under the terms of the Creative Commons Attribution License 2.5, which permits unrestricted use, distribution, and reproduction in any medium, provided that the original author and source are credited.
+# Contact <david.shotton@zoo.ox.ac.uk> for further information.
+
+# about this metadata...
+  <http://dx.doi.org/10.1371/journal.pntd.0000228.x003> 
+	dc:creator [ a foaf:Person ; foaf:name "David Shotton" ; foaf:mbox <mailto:david.shotton@zoo.ox.ac.uk> ; ] ;
+        rdf:type fabio:MetadataDocument ; # Expression
+	frbr:realizationOf [ a fabio:CitationMetadata ] ; # work
+	dc:subject <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+	prism:publicationDate	"2010-10-18"^^xsd:date ;
+	dcterms:license <http://creativecommons.org/licenses/by/2.5/> .
+
+
+# Citing document information
+<http://dx.doi.org/10.1371/journal.pntd.0000228>
+    dcterms:bibliographicCitation "Reis RB, Ribeiro GS, Felzemburgh RDM, Santana FS, Mohr S, et al. (2008) Impact of environment and social gradient on Leptospira infection in urban slums. PLoS Negl Trop Dis 2(4): e228." ;
+    prism:publicationDate "2008-04-23" ;
+    frbr:realizationOf [a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle ; # expression
+    pso:peerReviewed "true"^^xsd:boolean;.  # peer review status 
+
+# The following reference list is for this paper, which has 52 references. 
+# It records not only the number of times each cited paper is cited in the text of the citing paper, 
+# but also the nature of the relationship between the citing paper and the cited paper. 
+
+<http://dx.doi.org/10.1371/journal.pntd.0000228>              
+#1  Cited in-text 4 times
+    cito:cites <http://www.unhabitat.org/downloads/docs/GRHS.2003.0.pdf> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "4"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.unhabitat.org/downloads/docs/GRHS.2003.0.pdf> ] ; 
+    cito:obtainsBackgroundFrom <http://www.unhabitat.org/downloads/docs/GRHS.2003.0.pdf> ;
+
+#2 Cited in-text 3 times
+    cito:cites <http://dx.doi.org/10.1186/1472-698X-7-2> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "3"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1186/1472-698X-7-2> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1186/1472-698X-7-2> ;
+    cito:sharesAuthorsWith <http://dx.doi.org/10.1186/1472-698X-7-2> ;
+
+#3 Cited in-text 2 times
+    cito:cites <http://dx.doi.org/10.1016/S0140-6736%2805%2971049-7> ; 
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1016/S0140-6736%2805%2971049-7> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1016/S0140-6736%2805%2971049-7> ; 
+
+#4 Cited in-text 1 time  
+    cito:cites <http://www.un.org/millennium/> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.un.org/millennium/> ] ;
+    cito:obtainsBackgroundFrom <http://www.un.org/millennium/> ;
+
+#5 Cited in-text 1 time  
+    cito:cites <http://dx.doi.org/10.1016/S0140-6736%2805%2917991-4> ;  
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1016/S0140-6736%2805%2917991-4> ] ;
+    cito:obtainsBackgroundFrom  <http://dx.doi.org/10.1016/S0140-6736%2805%2917991-4> ;  
+
+#6 Cited in-text 10 times  
+    cito:cites <http://dx.doi.org/10.1016/S0140-6736(99)80012-9> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "10"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1016/S0140-6736(99)80012-9> ] ;
+    cito:obtainsBackgroundFrom  <http://dx.doi.org/10.1016/S0140-6736(99)80012-9> ;
+    cito:usesDataFrom <http://dx.doi.org/10.1016/S0140-6736(99)80012-9> ;
+    cito:confirms <http://dx.doi.org/10.1016/S0140-6736(99)80012-9> ;
+    cito:extends <http://dx.doi.org/10.1016/S0140-6736(99)80012-9> ;      
+    cito:sharesAuthorsWith <http://dx.doi.org/10.1016/S0140-6736(99)80012-9> ;  
+
+#7 Cited in-text 2 times  
+    cito:cites <http://dx.doi.org/10.1097/01.qco.0000178824.05715.2c> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1097/01.qco.0000178824.05715.2c> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1097/01.qco.0000178824.05715.2c> ;
+    cito:sharesAuthorsWith <http://dx.doi.org/10.1097/01.qco.0000178824.05715.2c> ;
+
+#8 Cited in-text 2 times  
+    cito:cites <http://dx.doi.org/10.1016/S1473-3099%2803%2900830-2> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1016/S1473-3099%2803%2900830-2> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1016/S1473-3099%2803%2900830-2> ;
+
+#9 Cited in-text 4 times  
+    cito:cites <http://dx.doi.org/10.1128/CMR.14.2.296-326.2001> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "4"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1128/CMR.14.2.296-326.2001> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1128/CMR.14.2.296-326.2001> ;
+    cito:usesMethodIn <http://dx.doi.org/10.1128/CMR.14.2.296-326.2001> ;
+
+#10 Cited in-text 5 times   
+    cito:cites <http://dx.doi.org/10.1371/journal.pmed.0030308> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "5"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1371/journal.pmed.0030308> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1371/journal.pmed.0030308> ;
+    cito:confirms <http://dx.doi.org/10.1371/journal.pmed.0030308> ;
+    cito:extends <http://dx.doi.org/10.1371/journal.pmed.0030308> ;
+
+#11 Cited in-text 4 times  
+    cito:cites <http://dx.doi.org/10.1080/0960312002001500> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "4"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1080/0960312002001500> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1080/0960312002001500> ;
+    cito:confirms <http://dx.doi.org/10.1080/0960312002001500> ;   
+    cito:extends <http://dx.doi.org/10.1080/0960312002001500> ;   
+
+#12 Cited in-text 2 times  
+    cito:cites <http://www.ncbi.nlm.nih.gov/pubmed/536125> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.ncbi.nlm.nih.gov/pubmed/536125> ] ;
+    cito:obtainsBackgroundFrom <http://www.ncbi.nlm.nih.gov/pubmed/536125> ;
+
+#13 Cited in-text 2 times  
+    cito:cites <http://dx.doi.org/10.1007/BF02723705> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1007/BF02723705> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1007/BF02723705> ;
+
+#14 Cited in-text 1 time  
+    cito:cites <http://origin.cdc.gov/ncidod/EID/vol11no05/04-1212.htm> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://origin.cdc.gov/ncidod/EID/vol11no05/04-1212.htm> ] ;
+    cito:obtainsBackgroundFrom <http://origin.cdc.gov/ncidod/EID/vol11no05/04-1212.htm> ;
+
+#15 Cited in-text 2 times  
+    cito:cites <http://dx.doi.org/10.1590/S0036-46652003000500002> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1590/S0036-46652003000500002> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1590/S0036-46652003000500002> ;
+
+#16 Cited in-text 3 times  
+    cito:cites <http://www.ajtmh.org/cgi/content/abstract/66/5/605> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "3"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.ajtmh.org/cgi/content/abstract/66/5/605> ] ;
+    cito:obtainsBackgroundFrom <http://www.ajtmh.org/cgi/content/abstract/66/5/605> ;
+    cito:usesDataFrom <http://www.ajtmh.org/cgi/content/abstract/66/5/605> ;
+    cito:sharesAuthorsWith <http://www.ajtmh.org/cgi/content/abstract/66/5/605> ;
+ 
+#17 Cited in-text 2 times  
+    cito:cites <http://dx.doi.org/10.1590/S0102-311X2004000600031> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1590/S0102-311X2004000600031> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1590/S0102-311X2004000600031> ;
+
+#18 Cited in-text 2 times  (this reference has no DOI or URL)
+    cito:cites _:ref18 ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget _:ref18 ] ;
+    cito:obtainsBackgroundFrom _:ref18 ;
+
+#19 Cited in-text 2 times  (this reference has no DOI or URL)
+    cito:cites _:ref19 ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget _:ref19 ] ;
+    cito:obtainsBackgroundFrom _:ref19 ;
+
+#20 Cited in-text 2 times  
+    cito:cites <http://portal.saude.gov.br/portal/arquivos/pdf/boletim_dengue_010208.pdf> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://portal.saude.gov.br/portal/arquivos/pdf/boletim_dengue_010208.pdf> ] ;
+     cito:obtainsBackgroundFrom <http://portal.saude.gov.br/portal/arquivos/pdf/boletim_dengue_010208.pdf> ;
+
+#21 Cited in-text 1 time
+    cito:cites <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_meningites_brasil.pdf> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_meningites_brasil.pdf> ] ;
+    cito:obtainsBackgroundFrom <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_meningites_brasil.pdf> ;
+
+#22 Cited in-text 1 time  (this reference has no DOI or URL)
+    cito:cites _:ref22 ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget _:ref22 ] ;
+    cito:obtainsBackgroundFrom _:ref22 ;
+
+#23 Cited in-text 1 time
+    cito:cites <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_obitos_dm_brasil.pdf> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_obitos_dm_brasil.pdf> ] ;
+    cito:obtainsBackgroundFrom <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_obitos_dm_brasil.pdf> ;
+
+#24 Cited in-text 1 time
+    cito:cites <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_lv_letalidade.pdf> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_lv_letalidade.pdf> ] ;
+    cito:obtainsBackgroundFrom <http://portal.saude.gov.br/portal/arquivos/pdf/tabela_lv_letalidade.pdf> ;
+
+#25 Cited in-text 1 time
+    cito:cites <http://www.paho.org/spanish/ped/ElNino-cap10-Ecuador.pdf> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.paho.org/spanish/ped/ElNino-cap10-Ecuador.pdf> ] ;
+    cito:obtainsBackgroundFrom <http://www.paho.org/spanish/ped/ElNino-cap10-Ecuador.pdf> ;
+
+#26 Cited in-text 2 times
+    cito:cites <http://dx.doi.org/10.1126/science.285.5426.347> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1126/science.285.5426.347> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1126/science.285.5426.347> ;
+
+#27 Cited in-text 2 times
+    cito:cites <http://dx.doi.org/10.1038/nature04188> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1038/nature04188> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1038/nature04188> ;
+
+#28 Cited in-text 2 times
+    cito:cites <http://dx.doi.org/10.1128/JCM.39.1.191-195.2001> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "2"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1128/JCM.39.1.191-195.2001> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1128/JCM.39.1.191-195.2001> ;
+    cito:usesDataFrom <http://dx.doi.org/10.1128/JCM.39.1.191-195.2001> ;
+    cito:sharesAuthorsWith <http://dx.doi.org/10.1128/JCM.39.1.191-195.2001> ;
+
+#29 Cited in-text 1 time
+    cito:cites <http://jcm.asm.org/cgi/content/abstract/38/1/450> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://jcm.asm.org/cgi/content/abstract/38/1/450> ] ;
+    cito:obtainsBackgroundFrom <http://jcm.asm.org/cgi/content/abstract/38/1/450> ;
+
+#30 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1590/S0074-02762006000400005> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1590/S0074-02762006000400005> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1590/S0074-02762006000400005> ;
+
+#31 Cited in-text 1 time
+    cito:cites <http://www.ibge.gov.br/home/estatistica/populacao/censo2000/default.shtm> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.ibge.gov.br/home/estatistica/populacao/censo2000/default.shtm> ] ;
+    cito:obtainsBackgroundFrom <http://www.ibge.gov.br/home/estatistica/populacao/censo2000/default.shtm> ;
+
+#32 Cited in-text 1 time  (this reference has no DOI or URL)
+    cito:cites _:ref32 ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget _:ref32 ] ;
+    cito:obtainsBackgroundFrom _:ref32 ;
+
+#33 Cited in-text 3 times
+    cito:cites <http://www.unhabitat.org/pmss/getPage.asp?page=bookView&book=1124> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "3"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.unhabitat.org/pmss/getPage.asp?page=bookView&book=1124> ] ;
+    cito:obtainsBackgroundFrom <http://www.unhabitat.org/pmss/getPage.asp?page=bookView&book=1124> ;
+
+#34 Cited in-text 3 times
+    cito:cites <http://www.who.int/csr/don/en/WHO_CDS_CSR_EPH_2002.23.pdf> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "3"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.who.int/csr/don/en/WHO_CDS_CSR_EPH_2002.23.pdf> ] ;
+    cito:usesMethodIn <http://www.who.int/csr/don/en/WHO_CDS_CSR_EPH_2002.23.pdf> ;
+
+#35 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1002/%28SICI%291097-0258%2819990515%2918:9%3C1101::AID-SIM99%3E3.0.CO;2-Q> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1002/%28SICI%291097-0258%2819990515%2918:9%3C1101::AID-SIM99%3E3.0.CO;2-Q> ] ;
+    cito:usesMethodIn <http://dx.doi.org/10.1002/%28SICI%291097-0258%2819990515%2918:9%3C1101::AID-SIM99%3E3.0.CO;2-Q> ;
+
+#36 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1186/1471-2288-3-21> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1186/1471-2288-3-21> ] ;
+    cito:usesMethodIn <http://dx.doi.org/10.1186/1471-2288-3-21> ;
+
+#37 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1002/sim.2672> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1002/sim.2672> ] ;
+    cito:usesMethodIn <http://dx.doi.org/10.1002/sim.2672> ;
+    cito:obtainsSupportFrom <http://dx.doi.org/10.1002/sim.2672> ;
+
+#38 Cited in-text 1 time
+    cito:cites <http://aje.oxfordjournals.org/cgi/content/abstract/151/5/531> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://aje.oxfordjournals.org/cgi/content/abstract/151/5/531> ] ;
+    cito:usesMethodIn <http://aje.oxfordjournals.org/cgi/content/abstract/151/5/531> ;
+    cito:obtainsSupportFrom <http://aje.oxfordjournals.org/cgi/content/abstract/151/5/531> ;
+
+#39 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1590/S0037-86822007000500002> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1590/S0037-86822007000500002> ] ;
+    cito:confirms <http://dx.doi.org/10.1590/S0037-86822007000500002> ;
+    cito:sharesAuthorsWith <http://dx.doi.org/10.1590/S0037-86822007000500002> ;
+
+#40 Cited in-text 3 times
+    cito:cites <http://dx.doi.org/10.1371/journal.pntd.0000154> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "3"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1371/journal.pntd.0000154> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1371/journal.pntd.0000154> ;
+    cito:confirms <http://dx.doi.org/10.1371/journal.pntd.0000154> ;
+    cito:sharesAuthorsWith <http://dx.doi.org/10.1371/journal.pntd.0000154> ;   
+
+#41 Cited in-text 1 time
+    cito:cites <http://www.press.jhu.edu/books/title_pages/3041.html> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.press.jhu.edu/books/title_pages/3041.html> ] ;
+    cito:usesDataFrom <http://www.press.jhu.edu/books/title_pages/3041.html> ;
+
+#42 Cited in-text 1 time
+    cito:cites <http://www.press.jhu.edu/books/title_pages/2993.html> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.press.jhu.edu/books/title_pages/2993.html> ] ;
+    cito:usesDataFrom <http://www.press.jhu.edu/books/title_pages/2993.html> ;
+
+#43 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1093/ije/30.5.1001> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1093/ije/30.5.1001> ] ;
+    cito:usesDataFrom <http://dx.doi.org/10.1093/ije/30.5.1001> ;
+
+#44 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1590/S0102-311X2004000300003> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1590/S0102-311X2004000300003> ] ;
+    cito:usesDataFrom <http://dx.doi.org/10.1590/S0102-311X2004000300003> ;
+
+#45 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1056/NEJM200107123450210> ;    
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1056/NEJM200107123450210> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1056/NEJM200107123450210> ;    
+
+#46 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1016/S0140-6736%2805%2971146-6> ;  
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1016/S0140-6736%2805%2971146-6> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1016/S0140-6736%2805%2971146-6> ;  
+
+#47 Cited in-text 1 time
+    cito:cites <http://www.cdc.gov/NCIDOD/eid/vol8no12/02-0180.htm> ;
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.cdc.gov/NCIDOD/eid/vol8no12/02-0180.htm> ] ;
+    cito:obtainsBackgroundFrom <http://www.cdc.gov/NCIDOD/eid/vol8no12/02-0180.htm> ;
+
+#48 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1023/A:1015509105668> ;    
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1023/A:1015509105668> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1023/A:1015509105668> ;    
+
+#49 Cited in-text 1 time
+    cito:cites <http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=269874> ; 
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=269874> ] ;
+    cito:obtainsBackgroundFrom <http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=269874> ; 
+
+#50 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.2166/wh.2007.009> ;    
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.2166/wh.2007.009> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.2166/wh.2007.009> ;    
+
+#51 Cited in-text 1 time
+    cito:cites <http://www.dcp2.org/pubs/DCP> ; 
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://www.dcp2.org/pubs/DCP> ] ;
+    cito:obtainsBackgroundFrom <http://www.dcp2.org/pubs/DCP> ; 
+
+#52 Cited in-text 1 time
+    cito:cites <http://dx.doi.org/10.1016/S0140-6736%2807%2961638-9> ;  
+    c4o:hasInTextCitationFrequency [ a c4o:InTextCitationCount ;
+      c4o:hasInTextCountValue "1"^^xsd:integer ;
+      c4o:hasInTextCitationTarget <http://dx.doi.org/10.1016/S0140-6736%2807%2961638-9> ] ;
+    cito:obtainsBackgroundFrom <http://dx.doi.org/10.1016/S0140-6736%2807%2961638-9> .
+
+
+# The following are citation details for the cited documents themselves, including publication dates in the format 
+# yyyy-mm-dd which allows temporal sorting.  Where an exact date cannot be determined, the date used is just the year, 
+# as for reference #1 prism:publicationDate "2003". or just the year and month, as for reference #7 prism:publicationDate "2005-10".  
+# The earliest possible date is used: thus a journal issue dated "May-June 2004" becomes prism:publicationDate "2004-05", while 
+# one dated "10 November 2007-16 November 2007" becomes prism:publicationDate "2007-11-10".
+
+#1
+<http://www.unhabitat.org/downloads/docs/GRHS.2003.0.pdf>
+    dcterms:bibliographicCitation "United Nations Human Settlements Programme (2003). The challenge of slums: Global report on human settlements 2003. London: Earthscan Publications Ltd.";
+    prism:publicationDate "2003" ;
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:Book ; # expression 
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 9 times.  
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "9"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#2
+<http://dx.doi.org/10.1186/1472-698X-7-2>   
+    dcterms:bibliographicCitation "Riley LW, Ko AI, Unger A, Reis MG (2007). Slum health: Diseases of neglected populations. BMC Int Health Hum Rights 7: 2.";
+    prism:publicationDate "2007-03-07";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Opinion ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 11 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 8 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "11"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "8"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#3
+<http://dx.doi.org/10.1016/S0140-6736%2805%2971049-7>
+    dcterms:bibliographicCitation "Sclar ED, Garau P, Carolini G (2005). The 21st century health challenge of slums and cities. Lancet 365: 901-903.";
+    prism:publicationDate "2005-03-05";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Opinion ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 23 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 14 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "23"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "14"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#4
+<http://www.un.org/millennium/>
+    dcterms:bibliographicCitation "The General Assembly of United Nations (2000). United Nations Millennium Declaration.";
+    prism:publicationDate "2000-09-06";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression  
+    frbr:embodiment [ a fabio:DigitalManifestation ]; # manifestation  
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 152 times.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "152"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#5
+<http://dx.doi.org/10.1016/S0140-6736%2805%2917991-4>
+    dcterms:bibliographicCitation "Bartram J, Lewis K, Lenton R, Wright A (2005). Focusing on improved water and sanitation for health. Lancet 365: 810-812. ";
+    prism:publicationDate "2005-02-26";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Opinion ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 33 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 20 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "33"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "20"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#6
+<http://dx.doi.org/10.1016/S0140-6736(99)80012-9>
+    dcterms:bibliographicCitation "Ko AI, Reis MG, Ribeiro Dourado CM, Johnson WD Jr, Riley LW (1999). Urban epidemic of severe leptospirosis in Brazil. Salvador Leptospirosis Study Group. Lancet 354: 820-825.";
+    prism:publicationDate "1999-09-04";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 206 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 149 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "206"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "149"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#7
+<http://dx.doi.org/10.1097/01.qco.0000178824.05715.2c>
+    dcterms:bibliographicCitation "McBride AJ, Athanazio DA, Reis MG, Ko AI (2005). Leptospirosis. Curr Opin Infect Dis 18: 376-386.";
+    prism:publicationDate "2005-10";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 59 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 70 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "59"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "70"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#8
+<http://dx.doi.org/10.1016/S1473-3099%2803%2900830-2>
+    dcterms:bibliographicCitation "Bharti AR, Nally JE, Ricaldi JN, Matthias MA, Diaz MM, et al. (2003). Leptospirosis: A zoonotic disease of global importance. Lancet Infect Dis 3: 757-771.";
+    prism:publicationDate "2003-12";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 240 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 170 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "240"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "170"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#9
+<http://dx.doi.org/10.1128/CMR.14.2.296-326.2001>
+    dcterms:bibliographicCitation "Levett PN (2001). Leptospirosis. Clin Microbiol Rev 14: 296-326.";
+    prism:publicationDate "2001-04";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 426 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 323 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "426"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "323"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#10
+<http://dx.doi.org/10.1371/journal.pmed.0030308>
+    dcterms:bibliographicCitation "Ganoza CA, Matthias MA, Collins-Richards D, Brouwer KC, Cunningham CB, et al. (2006). Determining risk for severe leptospirosis by molecular analysis of environmental surface waters for pathogenic Leptospira. PLoS Med 3: e308.";
+    prism:publicationDate "2006-08-22";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 13 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 8 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "13"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "8"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#11
+<http://dx.doi.org/10.1080/0960312002001500>
+    dcterms:bibliographicCitation "Barcellos C, Sabroza PC (2000). Socio-environmental determinants of the leptospirosis outbreak of 1996 in western Rio de Janeiro: A geographical approach. Int J Environ Health Res 10: 301-313.";
+    prism:publicationDate "2000-12-04";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 31 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 8 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "31"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "8"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#12
+<http://www.ncbi.nlm.nih.gov/pubmed/536125>
+    dcterms:bibliographicCitation "Caldas EM, Sampaio MB (1979). Leptospirosis in the city of Salvador, Bahia, Brazil: A case-control seroepidemiologic study. Int J Zoonoses 6: 85-96.";
+    prism:publicationDate "1979-12";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 6 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 5 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "6"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "5"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#13
+<http://dx.doi.org/10.1007/BF02723705>
+    dcterms:bibliographicCitation "Karande S, Kulkarni H, Kulkarni M, De A, Varaiya A (2002). Leptospirosis in children in Mumbai slums. Indian J Pediatr 69: 855-858.";
+    prism:publicationDate "2002-10";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 20 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 13 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "20"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "13"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#14
+<http://origin.cdc.gov/ncidod/EID/vol11no05/04-1212.htm>
+    dcterms:bibliographicCitation "LaRocque RC, Breiman RF, Ari MD, Morey RE, Janan FA, et al. (2005). Leptospirosis during dengue outbreak, Bangladesh. Emerg Infect Dis 11: 766-769.";
+    prism:publicationDate "2005-05";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 25 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 15 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "25"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "15"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#15
+<http://dx.doi.org/10.1590/S0036-46652003000500002>
+    dcterms:bibliographicCitation "Romero EC, Bernardo CC, Yasuda PH (2003). Human leptospirosis: A twenty-nine-year serological study in Sao Paulo, Brazil. Rev Inst Med Trop Sao Paulo 45: 245-248.";
+    prism:publicationDate "2003-09";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 31 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 16 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "31"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "16"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#16
+<http://www.ajtmh.org/cgi/content/abstract/66/5/605>
+    dcterms:bibliographicCitation "Sarkar U, Nascimento SF, Barbosa R, Martins R, Nuevo H, et al. (2002). Population-based case-control investigation of risk factors for leptospirosis during an urban epidemic. Am J Trop Med Hyg 66: 605-610.";
+    prism:publicationDate "2002-05-01";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 37 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 23 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "37"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "23"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#17
+<http://dx.doi.org/10.1590/S0102-311X2004000600031>
+    dcterms:bibliographicCitation "Tassinari WS, Pellegrini DCP, Sabroza PC, Carvalho MS (2004). [Spatial distribution of leptospirosis in the city of Rio de Janeiro, Brazil, 1996-1999]. Cad Saude Publica 20: 1721-1729.";
+    prism:publicationDate "2004-11";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 6 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 5 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "6"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "5"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#18
+_:ref18
+    dcterms:bibliographicCitation "Kupek E, de Sousa Santos Faversani MC, de Souza Philippi JM (2000). The relationship between rainfall and human leptospirosis in Florianopolis, Brazil, 1991-1996. Braz J Infect Dis 4: 131-134.";
+    prism:publicationDate "2000";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle ; # expression  
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 24 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 6 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "24"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "6"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#19
+_:ref19
+    dcterms:bibliographicCitation "Health Surveillance Secretary, Brazilian Ministry of Health (2007). [Leptospirosis case notification records, Brazil].";
+    prism:publicationDate "2007";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:PrintObject ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status   
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#20
+<http://portal.saude.gov.br/portal/arquivos/pdf/boletim_dengue_010208.pdf>
+    dcterms:bibliographicCitation "Health Surveillance Secretary, Brazilian Ministry of Health (2008).";
+    prism:publicationDate "2008";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ]; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status  
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#21
+<http://portal.saude.gov.br/portal/arquivos/pdf/tabela_meningites_brasil.pdf>
+    dcterms:bibliographicCitation "Health Surveillance Secretary, Brazilian Ministry of Health (2007). [Confirmed cases of meningococcal disease, Brazil, major regions and federal units, 1990-2006].";
+    prism:publicationDate "2007";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status  
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#22
+_:ref22
+    dcterms:bibliographicCitation "Health Surveillance Secretary, Brazilian Ministry of Health (2007). [visceral leishmaniasis case notification records, Brazil].";
+    prism:publicationDate "2007";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:PrintObject ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status  
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#23
+<http://portal.saude.gov.br/portal/arquivos/pdf/tabela_obitos_dm_brasil.pdf>
+    dcterms:bibliographicCitation "Health Surveillance Secretary, Brazilian Ministry of Health (2007). [Meningococcal disease deaths, Brazil, major regions and federal units, 1990-2006].";
+    prism:publicationDate "2007";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status  
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#24
+<http://portal.saude.gov.br/portal/arquivos/pdf/tabela_lv_letalidade.pdf>
+    dcterms:bibliographicCitation "Health Surveillance Secretary, Brazilian Ministry of Health (2007). [visceral leishmaniasis case fatality rate, Brazil, major regions and federal units, 2000-2006]. ";
+    prism:publicationDate "2007";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status  
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#25
+<http://www.paho.org/spanish/ped/ElNino-cap10-Ecuador.pdf>
+    dcterms:bibliographicCitation "Ministerio de Salud P blica, Organizaci n Panamericana de la Salud (1998). El fen meno El Ni o en Ecuador.; Organizaci n Panamericana de la Salud, editor. El Ni o, 1997-1998. Washington, D.C.: Organizaci n Panamericana de la Salud. pp. 175-230.";
+    prism:publicationDate "1998";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status  
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#26
+<http://dx.doi.org/10.1126/science.285.5426.347>
+    dcterms:bibliographicCitation "Epstein PR (1999). Climate and health. Science 285: 347-348.";
+    prism:publicationDate "1999-07-16";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 101 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 52 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "101"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "52"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#27
+<http://dx.doi.org/10.1038/nature04188>
+    dcterms:bibliographicCitation "Patz JA, Campbell-Lendrum D, Holloway T, Foley JA (2005). Impact of regional climate change on human health. Nature 438: 310-317.";
+    prism:publicationDate "2005-11-17";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 202 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 114 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "202"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "114"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#28
+<http://dx.doi.org/10.1128/JCM.39.1.191-195.2001>
+    dcterms:bibliographicCitation "Barocchi MA, Ko AI, Ferrer SR, Faria MT, Reis MG, et al. (2001). Identification of new repetitive element in Leptospira interrogans serovar copenhageni and its application to PCR-based differentiation of Leptospira serogroups. J Clin Microbiol 39: 191-195.";
+    prism:publicationDate "2001-01";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 17 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 14 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "17"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "14"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#29
+<http://jcm.asm.org/cgi/content/abstract/38/1/450>
+    dcterms:bibliographicCitation "Pereira MM, Matsuo MG, Bauab AR, Vasconcelos SA, Moraes ZM, et al.  (2000). A clonal subpopulation of Leptospira interrogans sensu stricto is the major cause of leptospirosis outbreaks in Brazil. J Clin Microbiol 38: 450-452.";
+    prism:publicationDate "2000-01";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 32 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 26 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "32"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "26"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#30
+<http://dx.doi.org/10.1590/S0074-02762006000400005>
+    dcterms:bibliographicCitation "Romero EC, Yasuda PH (2006). Molecular characterization of Leptospira sp. strains isolated from human subjects in Sao Paulo, Brazil using a polymerase chain reaction-based assay: A public health tool. Mem Inst Oswaldo Cruz 101: 373-378.";
+    prism:publicationDate "2006-06";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ]; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 5 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 3 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "5"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "3"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#31
+<http://www.ibge.gov.br/home/estatistica/populacao/censo2000/default.shtm>
+    dcterms:bibliographicCitation "Instituto Brasileiro de Geografia e Estat stica (2002). Censo demogr fico 2000 - resultados do universo. Rio de Janeiro: Instituto Brasileiro de Geografia e Estat stica.";
+    prism:publicationDate "2002";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 1 times.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "1"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#32
+_:ref32
+    dcterms:bibliographicCitation "Secretaria de Combate   Pobreza e  s Desigualdades Sociais/SECOMP (2005). Mapamento da pobreza em  reas urbanas do estado da Bahia. CD-ROM 2005.";
+    prism:publicationDate "2005";
+    fabio:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean. # peer review status  
+# Google Scholar on 11 March 2009: Citation frequency data not available.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+
+#33
+<http://www.unhabitat.org/pmss/getPage.asp?page=bookView&book=1124>
+    dcterms:bibliographicCitation "UN-HABITAT (2003). Slums of the world: The face of urban poverty in the new millennium? Nairobi: UN-HABITAT.";
+    prism:publicationDate "2003";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Report ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 4 times.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "4"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#34
+<http://www.who.int/csr/don/en/WHO_CDS_CSR_EPH_2002.23.pdf>
+    dcterms:bibliographicCitation "World Health Organization (2003). Human leptospirosis: Guidance for diagnosis, surveillance and control. Geneva: World Health Organization and International Leptospirosis Society.";
+    prism:publicationDate "2003";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ReferenceWork ] ; # work
+    rdf:type fabio:ReportDocument; # expression
+    frbr:embodiment [ a fabio:DigitalManifestation ] ; # manifestation
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 11 times.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "11"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#35
+<http://dx.doi.org/10.1002/%28SICI%291097-0258%2819990515%2918:9%3C1101::AID-SIM99%3E3.0.CO;2-Q>
+    dcterms:bibliographicCitation "Hin LY, Lau TK, Rogers MS, Chang AM (1999). Dichotomization of continuous measurements using generalized additive modelling-application in predicting intrapartum caesarean delivery. Stat Med 18: 1101-1110.";
+    prism:publicationDate "1999-04-26";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 4 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 3 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "4"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "3"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#36
+<http://dx.doi.org/10.1186/1471-2288-3-21>
+    dcterms:bibliographicCitation "Barros AJ, Hirakata VN (2003). Alternatives for logistic regression in cross-sectional studies: An empirical comparison of models that directly estimate the prevalence ratio. BMC Med Res Methodol 3: 21.";
+    prism:publicationDate "2003-10-20";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 322 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 177 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "322"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "177"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#37
+<http://dx.doi.org/10.1002/sim.2672>
+    dcterms:bibliographicCitation "Ashby D (2006). Bayesian statistics in medicine: A 25 year review. Stat Med 25: 3589-3631.";
+    prism:publicationDate "2006-08-31";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 28 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 18 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "28"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "18"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#38
+<http://aje.oxfordjournals.org/cgi/content/abstract/151/5/531>
+    dcterms:bibliographicCitation "Greenland S, Schwartzbaum JA, Finkle WD (2000). Problems due to small samples and sparse data in conditional logistic regression analysis. Am J Epidemiol 151: 531-539.";
+    prism:publicationDate "2000-03-01";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 61 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 60 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "61"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "60"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#39
+<http://dx.doi.org/10.1590/S0037-86822007000500002>
+    dcterms:bibliographicCitation "Dias JP, Teixeira MG, Costa MC, Mendes CM, Guimaraes P, et al. (2007). Factors associated with Leptospira sp infection in a large urban center in Northeastern Brazil. Rev Soc Bras Med Trop 40: 499-504.";
+    prism:publicationDate "2007-10";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 2 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 1 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "2"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "1"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#40
+<http://dx.doi.org/10.1371/journal.pntd.0000154>
+    dcterms:bibliographicCitation "Maciel EAP, Carvalho ALF, Nascimento SF, Matos RB, Gouveia EL, et al.  (2008). Household transmission of Leptospira infection in urban slum communities. PLoS Negl Trop Dis 2: e154.";    
+    prism:publicationDate "2008-01-30";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 2 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 2 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "2"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "2"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#41
+<http://www.press.jhu.edu/books/title_pages/3041.html>
+    dcterms:bibliographicCitation "Jackson WB (1982). Norway rat and allies. In: Chapman JA, Feldhamer GA, editors. Wild mammals of North America. Baltimore: The Johns Hopkins University Press. pp. 1077-1088.";
+    prism:publicationDate "1982";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ReferenceWork ] ; # work
+    rdf:type fabio:Book; # expression
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 19 times.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "19"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#42
+<http://www.press.jhu.edu/books/title_pages/2993.html>
+    dcterms:bibliographicCitation "Nowak RM (1991). Walker's mammals of the world. Baltimore: The John Hopkins University Press.";
+    prism:publicationDate "1991";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ReferenceWork ] ; # work
+    rdf:type fabio:Book; # expression
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 2203 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 0 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "2203"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "0"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#43
+<http://dx.doi.org/10.1093/ije/30.5.1001>
+    dcterms:bibliographicCitation "Barros FC, Victora CG, Horta BL (2001). Ethnicity and infant health in Southern Brazil. A birth cohort study. Int J Epidemiol 30: 1001-1008.";
+    prism:publicationDate "2001-10";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 45 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 16 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "45"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "16"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#44
+<http://dx.doi.org/10.1590/S0102-311X2004000300003>
+    dcterms:bibliographicCitation "Travassos C, Williams DR (2004). The concept and measurement of race and their relationship to public health: A review focused on Brazil and the United States. Cad Saude Publica 20: 660-678.";
+    prism:publicationDate "2004-05";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 61 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 24 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "61"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "24"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#45
+<http://dx.doi.org/10.1056/NEJM200107123450210>
+    dcterms:bibliographicCitation "Marmot M (2001). Inequalities in health. N Engl J Med 345: 134-136.";
+    prism:publicationDate "2001-07-12";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Opinion ] ; # work
+    rdf:type fabio:JournalEditorial ; # expression
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 846 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 56 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "846"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "56"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#46
+<http://dx.doi.org/10.1016/S0140-6736%2805%2971146-6>
+    dcterms:bibliographicCitation "Marmot M (2005). Social determinants of health inequalities. Lancet 365: 1099-1104.";
+    prism:publicationDate "2005-03-19";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 245 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 130 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "245"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "130"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#47
+<http://www.cdc.gov/NCIDOD/eid/vol8no12/02-0180.htm>
+    dcterms:bibliographicCitation "Phraisuwan P, Whitney EA, Tharmaphornpilas P, Guharat S, Thongkamsamut S, et al. (2002). Leptospirosis: Skin wounds and control strategies, Thailand, 1999. Emerg Infect Dis 8: 1455-1459.";
+    prism:publicationDate "2002-12";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 20 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 11 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "20"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "11"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#48
+<http://dx.doi.org/10.1023/A:1015509105668>
+    dcterms:bibliographicCitation "Cumberland P, Everard CO, Wheeler JG, Levett PN (2001). Persistence of anti-leptospiral IgM, IgG and agglutinating antibodies in patients presenting with acute febrile illness in Barbados 1979-1989. Eur J Epidemiol 17: 601-608.";
+    prism:publicationDate "2001-07";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 15 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 19 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "15"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "19"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#49
+<http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=269874>
+    dcterms:bibliographicCitation "Lupidi R, Cinco M, Balanzin D, Delprete E, Varaldo PE (1991). Serological follow-up of patients involved in a localized outbreak of leptospirosis. J Clin Microbiol 29: 805-809. ";
+    prism:publicationDate "1991-04";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ]; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed"true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 27 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 22 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "27"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "22"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#50
+<http://dx.doi.org/10.2166/wh.2007.009>
+    dcterms:bibliographicCitation "Hutton G, Haller L, Bartram J (2007). Global cost-benefit analysis of water supply and sanitation interventions. J Water Health 5: 481-502.";
+    prism:publicationDate "2007";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 14 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 3 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "14"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "3"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#51
+<http://www.dcp2.org/pubs/DCP>  
+    dcterms:bibliographicCitation "Laxminarayan R, Chow J, Salles S, Maslen P (2006). Intervention cost-effectiveness: Overview of general messages. In: Jamison DT, Breman JG, Measham AR, Alleyne G, Claeson M et al., editors. Disease control priorities in developing countries. New York: Oxford University Press. pp. 35-86.";
+    prism:publicationDate "2006-04";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:Review ]; # work
+    rdf:type fabio:BookChapter; # expression
+    pso:notPeerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 25 times.
+# ISI Web of Knowledge on 11 March 2009: Citation frequency data not available.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "25"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+#52
+<http://dx.doi.org/10.1016/S0140-6736%2807%2961638-9>
+    dcterms:bibliographicCitation "Barreto ML, Genser B, Strina A, Teixeira MG, Assis AM, et al. (2007). Effect of city-wide sanitation programme on reduction in rate of childhood diarrhoea in northeast Brazil: Assessment by two cohort studies. Lancet 370: 1622-1628.";
+    prism:publicationDate "2007-11-10";
+    cito:isCitedBy <http://dx.doi.org/10.1371/journal.pntd.0000228> ;
+    frbr:realizationOf [ a fabio:ResearchPaper ] ; # work
+    rdf:type fabio:JournalArticle; # expression
+    pso:peerReviewed "true"^^xsd:boolean; # peer review status  
+# Google Scholar on 11 March 2009: Cited 14 times.
+# ISI Web of Knowledge on 11 March 2009: Cited 10 times.
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "14"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://scholar.google.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] ;
+  c4o:hasglobalCitationFrequency [ a c4o:GlobalCitationCount ;
+    c4o:hasGlobalCountValue "10"^^xsd:integer ;
+    c4o:hasGlobalCountSource <http://http://apps.isiknowledge.com> ;
+    c4o:hasGlobalCountDate "2009-03-11T00:00:01"^^xsd:dateTime ] .
+
+# /end       ##
+
