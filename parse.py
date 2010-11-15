@@ -56,6 +56,7 @@ class CitoParser(object):
                 'citation': citation,
                 'date': date,
                 'citationCount': (sum(citefreq) / len(citefreq)) if citefreq else 1,
+                'alwaysDisplay': uri == rdflib.URIRef('http://dx.doi.org/10.1371/journal.pntd.0000228'),
                 'rdf_type': [t.rsplit('/')[-1] for t in types],
             }
 
