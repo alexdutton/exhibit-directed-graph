@@ -244,7 +244,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
         h = 300;
     //    x = pv.Scale.log(1, 50).range(0, w);
     var x = Exhibit.GraphView.neg_log_scale(1970, 2008.5).range(0, w);
-    //var x = pv.Scale.linear(1975, 2010).range(0, w);
+    var y = pv.Scale.log(0, 1200).range(0, h);
 
     var vis = new pv.Panel()
         .canvas(self._div)
@@ -274,6 +274,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
 //
     var network = vis.add(Exhibit.GraphView.force_layout).iterations(0);
     network.xScale(function() {return x;});
+    network.yScale(function() {return y;});
     
     vis.event("mousedown", pv.Behavior.pan())
        .event("mousewheel", pv.Behavior.zoom());
@@ -372,7 +373,7 @@ Exhibit.GraphView.force_layout = function() {
   this.label.textAlign("center");
 };
 
-Exhibit.GraphView.force_layout.prototype = pv.extend(pv.Layout.Force).property('xScale', pv.identity);
+Exhibit.GraphView.force_layout.prototype = pv.extend(pv.Layout.Force).property('xScale').property('yScale');
 
 Exhibit.GraphView.force_layout.prototype.defaults = new Exhibit.GraphView.force_layout()
     .extend(pv.Layout.Force.prototype.defaults);
@@ -396,13 +397,14 @@ Exhibit.GraphView.force_layout.prototype.buildImplied = function(s) {
       k = s.iterations,
       w = s.width,
       h = s.height;
-  var xScale = this.xScale();
+  var xScale = this.xScale(), yScale = this.yScale();
 
   /* Initialize positions randomly near the center. */
   for (var i = 0, n; i < nodes.length; i++) {
     n = nodes[i];
-    n.x = xScale(n.px);
-//    if (isNaN(n.x)) n.x = w / 2 + 40 * Math.random() - 20;
+    if (xScale) n.x = xScale(n.px);
+    if (yScale) n.y = xScale(n.py);
+    if (isNaN(n.x)) n.x = w / 2 + 200 * Math.random() - 100;
     if (isNaN(n.y)) n.y = h / 2 + 200 * Math.random() - 100;
   }
 
