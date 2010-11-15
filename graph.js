@@ -153,11 +153,10 @@ Exhibit.GraphView.prototype._getType = function(itemID, database) {
     return type;
 }
 
-Exhibit.GraphView.prototype._dataForProtovis = function() {
-    var currentSet = this._uiContext.getCollection().getAllItems();
+Exhibit.GraphView.prototype._preprocessDataForProtovis = function() {
     var accessors = this._accessors;
-    var nodes = {};
-    var links = {};
+    var nodes = this._nodes = {};
+    var links = this._links = {};
     var self = this;
 
     this._uiContext.getCollection().getAllItems().visit(function(itemID) {
@@ -205,7 +204,12 @@ Exhibit.GraphView.prototype._dataForProtovis = function() {
             value:  weight,
         };
     });
+};
 
+Exhibit.GraphView.prototype._dataForProtovis = function() {
+    if (this._nodes == undefined)
+        this._preprocessDataForProtovis();
+    var self = this, nodes = this._nodes, links = this._links;
     var filteredNodes = [], filteredLinks = [], nodeIDs = {}, i = 0;
     this._uiContext.getCollection().getRestrictedItems().visit(function(itemID) {
         if (self._getType(itemID, database) != self._settings.nodes)
