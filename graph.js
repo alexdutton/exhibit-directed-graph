@@ -47,6 +47,12 @@ Exhibit.GraphView._settingSpecs = {
 
 Exhibit.GraphView._accessorSpecs = [
     {
+        accessorName: "getAlwaysDisplay",
+        attributeName: "alwaysDisplay",
+        type: "boolean",
+//        type: "string",
+    },
+    {
         accessorName: "getNodeColorGrouper",
         attributeName: "nodeColorGrouper",
 //        type: "string",
@@ -163,16 +169,13 @@ Exhibit.GraphView.prototype._preprocessDataForProtovis = function() {
         if (self._getType(itemID, database) != self._settings.nodes)
             return;
 
-        var weight = 1, x = null, text = null, colorGrouper = null;
-        accessors.getText(itemID, database, function(_text) {
-            text = _text;
-        });
-        accessors.getNodeWeight(itemID, database, function(_weight) {
-            weight = _weight;
-        });
-        accessors.getNodeColorGrouper(itemID, database, function(_colorGrouper) {
-            colorGrouper = _colorGrouper;
-        });
+        var weight = 1, text = null, colorGrouper = null, alwaysDisplay = false;
+        accessors.getText(itemID, database, function(x) { text = x; });
+        accessors.getNodeWeight(itemID, database, function(x) { weight = x; });
+        accessors.getNodeColorGrouper(itemID, database, function(x) { colorGrouper = x; });
+        accessors.getAlwaysDisplay(itemID, database, function(x) { alwaysDisplay = x; });
+
+        var x = null;
         accessors.getX(itemID, database, function(_x) {
             var d = new Date(_x+"");
             year = new Date(d.getFullYear(), 0, 1).valueOf();
@@ -185,6 +188,7 @@ Exhibit.GraphView.prototype._preprocessDataForProtovis = function() {
             px: x,
             text: text,
             group: colorGrouper,
+            alwaysDisplay: alwaysDisplay,
         };
     });
     this._uiContext.getCollection().getAllItems().visit(function(itemID) {
@@ -211,8 +215,15 @@ Exhibit.GraphView.prototype._dataForProtovis = function() {
         this._preprocessDataForProtovis();
     var self = this, nodes = this._nodes, links = this._links;
     var filteredNodes = [], filteredLinks = [], nodeIDs = {}, i = 0;
+    for (nodeID in nodes) {
+        node = nodes[nodeID];
+        if (node.alwaysDisplay) {
+            filteredNodes.push(node);
+            nodeIDs[nodeID] = i++;
+        }
+    }
     this._uiContext.getCollection().getRestrictedItems().visit(function(itemID) {
-        if (self._getType(itemID, database) != self._settings.nodes)
+        if (self._getType(itemID, database) != self._settings.nodes || nodes[itemID].alwaysDisplay)
             return;
         filteredNodes.push(nodes[itemID]);
         nodeIDs[itemID] = i++;
