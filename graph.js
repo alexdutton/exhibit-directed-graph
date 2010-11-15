@@ -154,14 +154,13 @@ Exhibit.GraphView.prototype._getType = function(itemID, database) {
 }
 
 Exhibit.GraphView.prototype._dataForProtovis = function() {
-    var currentSet = this._uiContext.getCollection().getRestrictedItems();
+    var currentSet = this._uiContext.getCollection().getAllItems();
     var accessors = this._accessors;
-    var nodes = [], nodeNames = {};
-    var links = [];
+    var nodes = {};
+    var links = {};
     var self = this;
 
-    var i = 0;
-    currentSet.visit(function(itemID) {
+    this._uiContext.getCollection().getAllItems().visit(function(itemID) {
         if (self._getType(itemID, database) != self._settings.nodes)
             return;
 
@@ -181,14 +180,13 @@ Exhibit.GraphView.prototype._dataForProtovis = function() {
             next_year = new Date(d.getFullYear()+1, 0, 1).valueOf();
             x = d.getFullYear() + (d.valueOf() - year) / (next_year - year);
         });
-        nodes.push({
+        nodes[itemID] = {
             nodeName: text,
             weight: weight,
             px: x,
             text: text,
             group: colorGrouper,
-        });
-        nodeNames[itemID] = i++;
+        };
     });
     this._uiContext.getCollection().getAllItems().visit(function(itemID) {
         if (self._getType(itemID, database) != self._settings.edges)
@@ -200,20 +198,33 @@ Exhibit.GraphView.prototype._dataForProtovis = function() {
         accessors.getEdgeColor (itemID, database, function(x) { color  = x; });
         accessors.getEdgeWeight(itemID, database, function(x) { weight = x; });
 
-        if (!(source in nodeNames && target in nodeNames))
-            return;
-
-        links.push({
-            source: nodeNames[source],
-            target: nodeNames[target],
+        links[itemID] = {
+            sourceID: source,
+            targetID: target,
             color:  color,
-            value:  weight
-        });
+            value:  weight,
+        };
     });
+
+    var filteredNodes = [], filteredLinks = [], nodeIDs = {}, i = 0;
+    this._uiContext.getCollection().getRestrictedItems().visit(function(itemID) {
+        if (self._getType(itemID, database) != self._settings.nodes)
+            return;
+        filteredNodes.push(nodes[itemID]);
+        nodeIDs[itemID] = i++;
+    });
+    for (linkID in links) {
+        link = links[linkID];
+        if (!(link.sourceID in nodeIDs && link.targetID in nodeIDs))
+            continue;
+        links[linkID].source = nodeIDs[link.sourceID];
+        links[linkID].target = nodeIDs[link.targetID];
+        filteredLinks.push(links[linkID]);
+    }
     
     return {
-        nodes: nodes,
-        links: links,
+        nodes: filteredNodes,
+        links: filteredLinks,
     };
 }
 
