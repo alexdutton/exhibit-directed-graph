@@ -68,6 +68,11 @@ Exhibit.GraphView._accessorSpecs = [
 //        type: "string",
     },
     {
+        accessorName: "getY",
+        attributeName: "yAxis",
+//        type: "string",
+    },
+    {
         accessorName: "getEdgeColor",
         attributeName: "edgeColor",
         type: "string",
@@ -182,10 +187,13 @@ Exhibit.GraphView.prototype._preprocessDataForProtovis = function() {
             next_year = new Date(d.getFullYear()+1, 0, 1).valueOf();
             x = d.getFullYear() + (d.valueOf() - year) / (next_year - year);
         });
+        var y = null;
+        accessors.getY(itemID, database, function(_y) { y = _y });
         nodes[itemID] = {
             nodeName: text,
             weight: weight,
-            px: x,
+            sx: x,
+            sy: y,
             text: text,
             group: colorGrouper,
             alwaysDisplay: alwaysDisplay,
@@ -255,7 +263,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
         h = 300;
     //    x = pv.Scale.log(1, 50).range(0, w);
     var x = Exhibit.GraphView.neg_log_scale(1970, 2008.5).range(0, w);
-    var y = pv.Scale.log(0, 1200).range(0, h);
+    var y = pv.Scale.log(1, 3000).range(0, h);
 
     var vis = new pv.Panel()
         .canvas(self._div)
@@ -321,7 +329,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
                 .strokeStyle(function() this.fillStyle().darker())
                 .lineWidth(1)
                 .title(function(d) d.nodeName)
-                //.left(x.by(function(d) { return d.px; }))
+                //.left(x.by(function(d) { return d.sx; }))
                 .event("mousedown", Exhibit.GraphView.drag_behavior())
                 .event("drag", network)
                 //.event("click", function(n) { alert(n.text); });
@@ -354,10 +362,12 @@ Exhibit.GraphView.drag_behavior = function() {
   function mousemove() {
     if (!scene) return;
     scene.mark.context(scene, index, function() {
-        var m = this.mouse();
- //       p.x = p.fix.x = Math.max(0, Math.min(v1.x + m.x, max.x));
+      var m = this.mouse();
+      if (p.sx == undefined)
+        p.x = p.fix.x = Math.max(0, Math.min(v1.x + m.x, max.x));
+      if (p.sy == undefined)
         p.y = p.fix.y = Math.max(0, Math.min(v1.y + m.y, max.y));
-        this.render();
+      this.render();
       });
     pv.Mark.dispatch("drag", scene, index);
   }
@@ -413,8 +423,8 @@ Exhibit.GraphView.force_layout.prototype.buildImplied = function(s) {
   /* Initialize positions randomly near the center. */
   for (var i = 0, n; i < nodes.length; i++) {
     n = nodes[i];
-    if (xScale) n.x = xScale(n.px);
-    if (yScale) n.y = xScale(n.py);
+    if (xScale) n.x = xScale(n.sx);
+    if (yScale) n.y = h - yScale(n.sy);
     if (isNaN(n.x)) n.x = w / 2 + 200 * Math.random() - 100;
     if (isNaN(n.y)) n.y = h / 2 + 200 * Math.random() - 100;
   }
@@ -429,16 +439,17 @@ Exhibit.GraphView.force_layout.prototype.buildImplied = function(s) {
   sim.force(pv.Force.charge(s.chargeConstant)
       .domain(s.chargeMinDistance, s.chargeMaxDistance)
       .theta(s.chargeTheta));
-
   /* Spring (attracting) force. */
+  /*
   sim.force(pv.Force.spring(s.springConstant)
       .damping(s.springDamping)
       .length(s.springLength)
       .links(links));
+  */
 
   /* Position constraint (for interactive dragging). */
   sim.constraint(pv.Constraint.position());
-  //sim.constraint(pv.Constraint.position(function(p) { return {x: xScale(p.px), y: p.y}}));
+  //sim.constraint(pv.Constraint.position(function(p) { return {x: xScale(p.sx), y: p.y}}));
 
   /* Optionally add bound constraint. TODO: better padding. */
   if (s.bound) {
