@@ -260,7 +260,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
     var currentSet = collection.getRestrictedItems();
 
     var w = 900,
-        h = 300;
+        h = 500;
     //    x = pv.Scale.log(1, 50).range(0, w);
     var x = Exhibit.GraphView.neg_log_scale(1970, 2008.5).range(0, w);
     var y = pv.Scale.log(1, 3000).range(0, h);
