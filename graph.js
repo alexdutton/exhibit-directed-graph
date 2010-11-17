@@ -271,22 +271,23 @@ Exhibit.GraphView.prototype._reconstruct = function() {
         .width(w)
 //        .fillStyle('#00ff00')
         .height(h);
-
-/*
+//*
     vis.add(pv.Rule)
         .data(y.ticks())
         .left(0)
         .bottom(y)
-        .strokeStyle(function(d) d ? "#eee" : "#000")
+        .right(0)
+        .strokeStyle(function(d) { return (d != 1) ? "#eee" : "#000"; })
         .anchor("left").add(pv.Label)
             .textMargin(8);
-*/
+ //           */
 
     vis.add(pv.Rule)
         .data(x.ticks())
         .bottom(0)
+        .top(0)
         .left(x)
-        .strokeStyle(function(d) d ? "#eee" : "#000")
+        .strokeStyle(function(d) { return (d != 1970) ? "#eee" : "#000" })
         .anchor("bottom").add(pv.Label)
             .textMargin(8);
 //            .text(x.tickFormat);
