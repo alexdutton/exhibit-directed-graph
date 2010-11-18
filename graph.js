@@ -32,12 +32,14 @@ Exhibit.GraphView._settingSpecs = {
     "plotHeight":   { type: "int",   defaultValue: 400 },
     "bubbleWidth":  { type: "int",   defaultValue: 400 },
     "bubbleHeight": { type: "int",   defaultValue: 300 },
-    "xAxisMin":     { type: "float", defaultValue: Number.POSITIVE_INFINITY },
-    "xAxisMax":     { type: "float", defaultValue: Number.NEGATIVE_INFINITY },
-    "xAxisType":    { type: "enum",  defaultValue: "linear", choices: [ "linear", "log" ] },
-    "yAxisMin":     { type: "float", defaultValue: Number.POSITIVE_INFINITY },
-    "yAxisMax":     { type: "float", defaultValue: Number.NEGATIVE_INFINITY },
-    "yAxisType":    { type: "enum",  defaultValue: "linear", choices: [ "linear", "log" ] },
+    "xAxis":        { type: "text", defaultValue: null },
+    "xAxisMin":     { type: "float", defaultValue: null },
+    "xAxisMax":     { type: "float", defaultValue: null },
+    "xAxisType":    { type: "enum",  defaultValue: "linear", choices: [ "linear", "log", "neglog" ] },
+    "yAxis":        { type: "text", defaultValue: null },
+    "yAxisMin":     { type: "float", defaultValue: null },
+    "yAxisMax":     { type: "float", defaultValue: null },
+    "yAxisType":    { type: "enum",  defaultValue: "linear", choices: [ "linear", "log", "neglog" ] },
     "xLabel":       { type: "text",  defaultValue: "x" },
     "yLabel":       { type: "text",  defaultValue: "y" },
     "color":        { type: "text",  defaultValue: "#5D7CBA" },
@@ -155,13 +157,30 @@ Exhibit.GraphView.prototype._weightFuncs = {
     }
 };
 
-Exhibit.GraphView.prototype._getType = function(itemID, database) {
-    var type = null;
-    
-    this._accessors.getType(itemID, database, function(_type) {
-        type = _type;
-    });
-    return type;
+
+/* Shortcut methods for single-valued accessors */
+Exhibit.GraphView.prototype._accessor = _accessor = function(name) {
+    var self = this;
+    return function(itemID, database) {
+        var x = null;
+        (self._accessors || this._accessors)[name](itemID, database, function(_x) {
+            x = _x;
+        });
+        return x;
+    };
+}
+
+for (k in Exhibit.GraphView._accessorSpecs) {
+    k = Exhibit.GraphView._accessorSpecs[k];
+    Exhibit.GraphView.prototype['_'+k.accessorName] = _accessor(k.accessorName);
+}
+/* End shortcut methods */
+
+Exhibit.GraphView.prototype._getDateFloat = function(d) {
+    d = new Date(d+"");
+    year = new Date(d.getFullYear(), 0, 1).valueOf();
+    next_year = new Date(d.getFullYear()+1, 0, 1).valueOf();
+    return d.getFullYear() + (d.valueOf() - year) / (next_year - year);
 }
 
 Exhibit.GraphView.prototype._preprocessDataForProtovis = function() {
@@ -174,28 +193,24 @@ Exhibit.GraphView.prototype._preprocessDataForProtovis = function() {
         if (self._getType(itemID, database) != self._settings.nodes)
             return;
 
-        var weight = 1, text = null, colorGrouper = null, alwaysDisplay = false;
-        accessors.getText(itemID, database, function(x) { text = x; });
-        accessors.getNodeWeight(itemID, database, function(x) { weight = x; });
-        accessors.getNodeColorGrouper(itemID, database, function(x) { colorGrouper = x; });
-        accessors.getAlwaysDisplay(itemID, database, function(x) { alwaysDisplay = x; });
+        var text = self._getText(itemID, database),
+            nodeWeight = self._getNodeWeight(itemID, database),
+            nodeColorGrouper = self._getNodeColorGrouper(itemID, database),
+            alwaysDisplay = self._getAlwaysDisplay(itemID, database),
+            sx = self._getX(itemID, database),
+            sy = self._getY(itemID, database);
 
-        var x = null;
-        accessors.getX(itemID, database, function(_x) {
-            var d = new Date(_x+"");
-            year = new Date(d.getFullYear(), 0, 1).valueOf();
-            next_year = new Date(d.getFullYear()+1, 0, 1).valueOf();
-            x = d.getFullYear() + (d.valueOf() - year) / (next_year - year);
-        });
-        var y = null;
-        accessors.getY(itemID, database, function(_y) { y = _y });
+        // If our x and y values they look like dates, turn them into fractional years
+        if (sx != null && sx.match(/^\d{4}(-\d\d(-\d\d)?)?$/)) sx = self._getDateFloat(sx);
+        if (sy != null && sy.match(/^\d{4}(-\d\d(-\d\d)?)?$/)) sy = self._getDateFloat(sy);
+
         nodes[itemID] = {
             nodeName: text,
-            weight: weight,
-            sx: x,
-            sy: y,
+            weight: nodeWeight,
+            sx: sx,
+            sy: sy,
             text: text,
-            group: colorGrouper,
+            group: nodeColorGrouper,
             alwaysDisplay: alwaysDisplay,
         };
     });
@@ -251,6 +266,12 @@ Exhibit.GraphView.prototype._dataForProtovis = function() {
     };
 }
 
+Exhibit.GraphView.prototype._scales = {
+    linear: pv.Scale.linear,
+    log: pv.Scale.log,
+    neglog: Exhibit.GraphView.neg_log_scale,
+};
+
 Exhibit.GraphView.prototype._reconstruct = function() {
     var self = this;
     var collection = this._uiContext.getCollection();
@@ -259,45 +280,66 @@ Exhibit.GraphView.prototype._reconstruct = function() {
     var accessors = this._accessors;
     var currentSet = collection.getRestrictedItems();
 
-    var w = 900,
-        h = 500;
+
+    var w = self._div.scrollWidth-60,
+        h = self._div.scrollHeight-35;
     //    x = pv.Scale.log(1, 50).range(0, w);
-    var x = Exhibit.GraphView.neg_log_scale(1970, 2008.5).range(0, w);
-    var y = pv.Scale.log(1, 3000).range(0, h);
+
+    var xScale = null, yScale = null; 
 
     var vis = new pv.Panel()
         .canvas(self._div)
         .bottom(30).top(5).left(30).right(30)
         .width(w)
-//        .fillStyle('#00ff00')
         .height(h);
-//*
-    vis.add(pv.Rule)
-        .data(y.ticks())
-        .left(0)
-        .bottom(y)
-        .right(0)
-        .strokeStyle(function(d) { return (d != 1) ? "#eee" : "#000"; })
-        .anchor("left").add(pv.Label)
-            .textMargin(8);
- //           */
 
-    vis.add(pv.Rule)
-        .data(x.ticks())
-        .bottom(0)
-        .top(0)
-        .left(x)
-        .strokeStyle(function(d) { return (d != 1970) ? "#eee" : "#000" })
-        .anchor("bottom").add(pv.Label)
-            .textMargin(8);
-//            .text(x.tickFormat);
-//
+    if (!this._nodes)
+        this._preprocessDataForProtovis();
+
+    var xMin = yMin = Number.POSITIVE_INFINITY,
+        xMax = yMax = Number.NEGATIVE_INFINITY;
+    for (i in this._nodes) {
+        n = this._nodes[i];
+        xMin = Math.min(xMin, n.sx); xMax = Math.max(xMax, n.sx);
+        yMin = Math.min(yMin, n.sy); yMax = Math.max(yMax, n.sy);
+    }
+
+    if (settings.xAxis) {
+        xMin = (settings.xAxisMin != null) ? settings.xAxisMin : xMin; 
+        xMax = (settings.xAxisMax != null) ? settings.xAxisMax : xMax; 
+        xScale = self._scales[settings.xAxisType](xMin, xMax).range(0, w);
+
+        vis.add(pv.Rule)
+           .data(xScale.ticks())
+           .bottom(0)
+           .top(0)
+           .left(xScale)
+           .strokeStyle(function(d) { return (d != 1970) ? "#eee" : "#000" })
+           .anchor("bottom").add(pv.Label)
+                            .textMargin(8);
+    }
+
+    if (settings.yAxis) {
+        yMin = (settings.yAxisMin != undefined) ? settings.yAxisMin : yMin; 
+        yMax = (settings.yAxisMax != undefined) ? settings.yAxisMax : yMax; 
+        yScale = self._scales[settings.yAxisType](yMin, yMax).range(0, h);
+
+        vis.add(pv.Rule)
+           .data(yScale.ticks())
+           .left(0)
+           .bottom(yScale)
+           .right(0)
+           .strokeStyle(function(d) { return (d != 1) ? "#eee" : "#000"; })
+           .anchor("left").add(pv.Label)
+                          .textMargin(8);
+    }
+
     var network = vis.add(Exhibit.GraphView.force_layout).iterations(0);
-    network.xScale(function() {return x;});
-    network.yScale(function() {return y;});
+
+    if (xScale) network.xScale(function() {return xScale; });
+    if (yScale) network.yScale(function() {return yScale; });
+
     
-    vis.event("mousedown", pv.Behavior.pan())
-       .event("mousewheel", pv.Behavior.zoom());
 
     // Load our data
     protovisData = self._dataForProtovis();
@@ -426,8 +468,8 @@ Exhibit.GraphView.force_layout.prototype.buildImplied = function(s) {
     n = nodes[i];
     if (xScale) n.x = xScale(n.sx);
     if (yScale) n.y = h - yScale(n.sy);
-    if (isNaN(n.x)) n.x = w / 2 + 200 * Math.random() - 100;
-    if (isNaN(n.y)) n.y = h / 2 + 200 * Math.random() - 100;
+    if (isNaN(n.x)) n.x = w * (Math.random() * 0.8 + 0.1);
+    if (isNaN(n.y)) n.y = h * (Math.random() * 0.8 + 0.1);
   }
 
   /* Initialize the simulation. */
@@ -486,19 +528,13 @@ Exhibit.GraphView.force_layout.prototype.buildImplied = function(s) {
     if (!this.$timer) this.$timer = setInterval(function() {
       var render = false;
       for (var f = that.binds.$force; f; f = f.next) {
-        if (pv.max(f.nodes, speed) > f.min) {
+        if (true || pv.max(f.nodes, speed) > f.min) {
           f.sim.step();
           render = true;
         }
       }
-//      for (var n in ns) {
-//          ns[n].x = xScale(ns[n].px);
-//      }
-      for (var n = nodes; n; n = n.next) {
-          n.x = xScale(n.px);
-      }
       if (render) that.render();
-    }, 2000);
+    }, 60);
   } else for (var i = 0; i < k; i++) {
     sim.step();
   }
