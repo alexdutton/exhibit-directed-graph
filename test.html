@@ -13,8 +13,27 @@
 
   <body>
     <h1><code>GraphView</code> test</h1>
-    <div ex:role="view" ex:viewClass="Exhibit.GraphView" ex:type=".type" ex:nodes="Work" ex:edges="Citation" ex:source=".citing" ex:target=".cited" ex:nodeWeight=".citationCount" ex:edgeWeight="1" ex:nodeWeightType="cuberoot" ex:nodeWeightScale="14" ex:xAxis=".date" ex:xAxisType="log" ex:yAxis=".citationCount" ex:yAxisType="log" ex:nodeColorGrouper=".rdf_type" style="border:1px solid red; width: 90%; height:500px; padding:10px" ex:text=".citation" ex:alwaysDisplay="" ></div>
-    <div ex:role="facet" ex:expression=".citationCount"/>
+    <div
+      ex:role="view"
+      ex:viewClass="Exhibit.GraphView"
+      ex:type=".type"
+      ex:nodes="Work"
+      ex:edges="Citation"
+      ex:source=".citing"
+      ex:target=".cited"
+      ex:nodeWeight=".citationCount"
+      ex:nodeWeightType="cuberoot"
+      ex:nodeWeightScale="14"
+      ex:xAxis=".date" ex:xAxisType="log"
+      ex:yAxis=".citationCount" ex:yAxisType="log" ex:yAxisNice="true"
+      ex:nodeColorGrouper=".rdf_type"
+      ex:edgeColorGrouper=".count"
+      ex:edgeWeight=".count"
+      ex:text=".citation"
+      ex:alwaysDisplay=".alwaysDisplay"
+      style="width: 90%; height:500px; padding:10px"></div>
+  <div ex:role="facet" ex:expression=".citationCount" ex:facetClass="Slider" 
+      />
     <div ex:role="view"/>
   </body>
 </html>

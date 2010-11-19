@@ -36,10 +36,12 @@ Exhibit.GraphView._settingSpecs = {
     "xAxisMin":     { type: "float", defaultValue: null },
     "xAxisMax":     { type: "float", defaultValue: null },
     "xAxisType":    { type: "enum",  defaultValue: "linear", choices: [ "linear", "log", "neglog" ] },
+    "xAxisNice":    { type: "boolean", defaultValue: false },
     "yAxis":        { type: "text", defaultValue: null },
     "yAxisMin":     { type: "float", defaultValue: null },
     "yAxisMax":     { type: "float", defaultValue: null },
     "yAxisType":    { type: "enum",  defaultValue: "linear", choices: [ "linear", "log", "neglog" ] },
+    "yAxisNice":    { type: "boolean", defaultValue: false },
     "xLabel":       { type: "text",  defaultValue: "x" },
     "yLabel":       { type: "text",  defaultValue: "y" },
     "color":        { type: "text",  defaultValue: "#5D7CBA" },
@@ -52,32 +54,26 @@ Exhibit.GraphView._accessorSpecs = [
         accessorName: "getAlwaysDisplay",
         attributeName: "alwaysDisplay",
         type: "boolean",
-//        type: "string",
     },
     {
         accessorName: "getNodeColorGrouper",
         attributeName: "nodeColorGrouper",
-//        type: "string",
     },
     {
         accessorName: "getText",
         attributeName: "text",
-//        type: "string",
     },
     {
         accessorName: "getX",
         attributeName: "xAxis",
-//        type: "string",
     },
     {
         accessorName: "getY",
         attributeName: "yAxis",
-//        type: "string",
     },
     {
-        accessorName: "getEdgeColor",
-        attributeName: "edgeColor",
-        type: "string",
+        accessorName: "getEdgeColorGrouper",
+        attributeName: "edgeColorGrouper",
     },
     {
         accessorName: "getEdgeWeight",
@@ -218,18 +214,19 @@ Exhibit.GraphView.prototype._preprocessDataForProtovis = function() {
         if (self._getType(itemID, database) != self._settings.edges)
             return;
 
-        var source = null, target = null, color = '#888', weight = null;
-        accessors.getSource(itemID, database, function(x) { source = x; });
-        accessors.getTarget(itemID, database, function(x) { target = x; });
-        accessors.getEdgeColor (itemID, database, function(x) { color  = x; });
-        accessors.getEdgeWeight(itemID, database, function(x) { weight = x; });
+        var source = self._getSource(itemID, database);
+        var target = self._getTarget(itemID, database);
+        var edgeColorGrouper = self._getEdgeColorGrouper(itemID, database) || '#888';
+        var weight = self._getEdgeWeight(itemID, database) ;
+
 
         links[itemID] = {
             sourceID: source,
             targetID: target,
-            color:  color,
-            value:  weight,
+            group:  edgeColorGrouper,
+            weight:  weight,
         };
+        //alert([weight, links[itemID].weight]);
     });
 };
 
@@ -281,21 +278,22 @@ Exhibit.GraphView.prototype._reconstruct = function() {
     var currentSet = collection.getRestrictedItems();
 
 
-    var w = self._div.scrollWidth-60,
-        h = self._div.scrollHeight-35;
+    var w = self._div.scrollWidth - 80,
+        h = self._div.scrollHeight - 35;
     //    x = pv.Scale.log(1, 50).range(0, w);
 
     var xScale = null, yScale = null; 
 
     var vis = new pv.Panel()
         .canvas(self._div)
-        .bottom(30).top(5).left(30).right(30)
+        .bottom(30).top(5).left(50).right(30)
         .width(w)
         .height(h);
 
     if (!this._nodes)
         this._preprocessDataForProtovis();
 
+    // Determine min and max values along each axis.
     var xMin = yMin = Number.POSITIVE_INFINITY,
         xMax = yMax = Number.NEGATIVE_INFINITY;
     for (i in this._nodes) {
@@ -308,13 +306,14 @@ Exhibit.GraphView.prototype._reconstruct = function() {
         xMin = (settings.xAxisMin != null) ? settings.xAxisMin : xMin; 
         xMax = (settings.xAxisMax != null) ? settings.xAxisMax : xMax; 
         xScale = self._scales[settings.xAxisType](xMin, xMax).range(0, w);
+        if (settings.xAxisNice) xScale = xScale.nice();
 
         vis.add(pv.Rule)
            .data(xScale.ticks())
            .bottom(0)
            .top(0)
            .left(xScale)
-           .strokeStyle(function(d) { return (d != 1970) ? "#eee" : "#000" })
+           .strokeStyle('#999')
            .anchor("bottom").add(pv.Label)
                             .textMargin(8);
     }
@@ -323,6 +322,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
         yMin = (settings.yAxisMin != undefined) ? settings.yAxisMin : yMin; 
         yMax = (settings.yAxisMax != undefined) ? settings.yAxisMax : yMax; 
         yScale = self._scales[settings.yAxisType](yMin, yMax).range(0, h);
+        if (settings.yAxisNice) yScale = yScale.nice();
 
         vis.add(pv.Rule)
            .data(yScale.ticks())
@@ -331,7 +331,8 @@ Exhibit.GraphView.prototype._reconstruct = function() {
            .right(0)
            .strokeStyle(function(d) { return (d != 1) ? "#eee" : "#000"; })
            .anchor("left").add(pv.Label)
-                          .textMargin(8);
+                          .textMargin(8)
+                          .visible(function(d) { return (d+"").startsWith("1"); }) ;
     }
 
     var network = vis.add(Exhibit.GraphView.force_layout).iterations(0);
@@ -339,17 +340,17 @@ Exhibit.GraphView.prototype._reconstruct = function() {
     if (xScale) network.xScale(function() {return xScale; });
     if (yScale) network.yScale(function() {return yScale; });
 
-    
-
     // Load our data
     protovisData = self._dataForProtovis();
     network.nodes(protovisData.nodes).links(protovisData.links);
 
     colors = pv.Colors.category10();
+    weightColors = pv.Scale.log(1, 10).range('red', 'yellow', 'green')
 
     network.link.add(pv.Line)
                 .strokeStyle("#999") //function() { return this.targetNode.fix ? "#080" : "#999"; })
-                .lineWidth(1)
+                .strokeStyle(function(n, l) { return weightColors(l.weight); } )
+                .lineWidth(function(n, l) Math.pow(l.weight, 1/1))
                 .add(pv.Dot)
                 .data(function(l) {
                     // Place the arrows in the middle of the arcs
@@ -362,7 +363,7 @@ Exhibit.GraphView.prototype._reconstruct = function() {
                     return Math.atan2(l.targetNode.y - l.sourceNode.y, l.targetNode.x - l.sourceNode.x) - Math.PI/2
                 })
                 .shape("triangle")
-                  .fillStyle("#999")
+                  .fillStyle(function(n, l) weightColors(l.weight))
 //                .fillStyle(function(n, l) { return self._edgeColorFunc(); })
                 .size(4);
                 
@@ -379,6 +380,13 @@ Exhibit.GraphView.prototype._reconstruct = function() {
 
     vis.render();
 };
+
+/**
+ * Exhibit.GraphView.drag_behavior
+ *
+ * Mostly the same as pv.Behavior.Drag, but will refuse to move nodes off of
+ * axes when they are not positioned randomly along that axis.
+ **/
 
 Exhibit.GraphView.drag_behavior = function() {
   var scene, // scene context
@@ -428,6 +436,14 @@ Exhibit.GraphView.drag_behavior = function() {
   pv.listen(window, "mouseup", mouseup);
   return mousedown;
 };
+
+/**
+ * Exhibit.GraphView.force_layout
+ *
+ * Mostly the same as pv.Layout.Force, but takes xScale and yScale arguments
+ * to determine the positions of nodes. When an axis is unscaled it positions
+ * nodes randomly along that axis.
+ **/
 
 Exhibit.GraphView.force_layout = function() {
   pv.Layout.Network.call(this);
@@ -539,6 +555,9 @@ Exhibit.GraphView.force_layout.prototype.buildImplied = function(s) {
     sim.step();
   }
 };
+
+
+// This scale needs more work…
 
 Exhibit.GraphView.neg_log_scale = function() {
   var scale = pv.Scale.quantitative(1, 10),
