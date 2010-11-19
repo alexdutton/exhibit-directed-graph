@@ -80,7 +80,9 @@ class CitoParser(object):
 
 if __name__ == '__main__':
     parser = CitoParser(sys.argv[1])
-    items = list(chain(parser.get_works(), parser.get_citations()))
+    items = list(chain(
+        sorted(parser.get_works(), key=lambda w:w['citation']),
+        sorted(parser.get_citations(), key=lambda c:(c['citing'], c['cited']))))
 
     print simplejson.dumps({
         'items': items,
